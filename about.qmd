@@ -1,0 +1,21 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/simonheitin
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/simon-heitin-38145892/
+    - icon: github
+      text: Github
+      href: https://github.com/sheitin
+
+---
+
+Hello Reader, thanks for clicking on my blog! My name is Simon Heitin and I've been a professional data scientist for 5 years. My academic and career journey has taken me from pure mathematics to systems engineering to operations research to data science. My professional work has been solely in the aviation domain to this point.
+
+I love R and Rstudio for many reasons, the number one being the community. I hope this blog can be a positive contribution to the R community from which I've gained so much. Enjoy!

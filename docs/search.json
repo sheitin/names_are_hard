@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I love R and Rstudio for many reasons, the number one being the community. I hope this blog can be a positive contribution to the R community from which I’ve gained so much. Enjoy!"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Amazing Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#check-out-this-plot",
+    "href": "posts/post-with-code/index.html#check-out-this-plot",
+    "title": "Post With Amazing Code",
+    "section": "Check Out This Plot!",
+    "text": "Check Out This Plot!\n\npenguins %>%\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point()"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Names Are Hard",
+    "section": "",
+    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\nNo matching items"
+  }
+]

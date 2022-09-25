@@ -1,0 +1,28 @@
+---
+title: "Post With Amazing Code"
+author: "Simon Heitin"
+date: "2022-09-25"
+categories: [news, code, analysis]
+image: "image.jpg"
+---
+
+This is a post with executable code.
+
+```{r load_data}
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(palmerpenguins)
+data(package = 'palmerpenguins')
+```
+## Check Out This Plot!
+```{r make_a_aplot}
+#| warning: false
+#| message: false
+
+penguins %>%
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point()
+```
+
