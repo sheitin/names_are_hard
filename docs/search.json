@@ -28,10 +28,17 @@
     "text": "Check Out This Plot!\n\npenguins %>%\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point()"
   },
   {
+    "objectID": "posts/set-up-quarto-blog-rstudio-cloud/index.html",
+    "href": "posts/set-up-quarto-blog-rstudio-cloud/index.html",
+    "title": "DRAFT Post With Amazing Code",
+    "section": "",
+    "text": "The website name will come directly from the github repo name\ncp -r myblog/* .\ngit config –global user.email “simon.heitin@gmail.com” git config –global user.name “Simon Heitin”\nSeems like this page says that there are 3 different ways to publish to GitHub Pages and that each one is “the simplest” https://quarto.org/docs/publishing/github-pages.html\nAdding a new post https://quarto.org/docs/websites/website-blog.html#posts-directory\nI’ll use the first workflow - publish from the docs directory"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Names Are Hard",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\nNo matching items"
+    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nnews\n\n\nhow-to\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\nNo matching items"
   }
 ]

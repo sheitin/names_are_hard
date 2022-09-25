@@ -1,0 +1,24 @@
+---
+title: "DRAFT Post With Amazing Code"
+author: "Simon Heitin"
+date: "2022-09-25"
+categories: [news, how-to]
+---
+
+## These Are Just Notes Right Now
+
+The website name will come directly from the github repo name
+
+cp -r myblog/* .
+
+  git config --global user.email "simon.heitin@gmail.com"
+  git config --global user.name "Simon Heitin"
+
+
+
+Seems like this page says that there are 3 different ways to publish to GitHub Pages and that each one is "the simplest" https://quarto.org/docs/publishing/github-pages.html
+
+Adding a new post
+https://quarto.org/docs/websites/website-blog.html#posts-directory
+
+I'll use the first workflow - publish from the docs directory
