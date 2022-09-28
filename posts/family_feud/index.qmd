@@ -41,11 +41,11 @@ fam_responses_anon <- data.frame(
   stringsAsFactors = FALSE,
                answer = c("ANTE","ERRS","HOME",
                           "IDEA","DERN","BEAU","SETS","EONS","ERAS","TIME",
-                          "WELL","WHAT","ACRE","STAG","ARIL", "LAST", "CLAM", "FOUR"),
+                          "WELL","WHAT","ACRE","STAG","ARIL", "LAST", "CLAM", "FOUR", "WILL"),
             pseudonym = c("Keona","Gordian","Zai",
                           "Makaila","Olof","Quintana","Selene","Ceron",
                           "Harrison","Mignonette","Tua","Alysha","Ziva",
-                          "Maddox","Mervin", "Ultimate Warrior", "Janet", "Tarzan")
+                          "Maddox","Mervin", "Ultimate Warrior", "Janet", "Tarzan", "Spock")
    )
 
 # get the number of occurrences for each 4-letter word
