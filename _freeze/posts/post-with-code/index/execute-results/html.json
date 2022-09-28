@@ -1,7 +1,7 @@
 {
-  "hash": "3afffca21d2641b15164df083a06cc87",
+  "hash": "a26d6f7aee01b2e40136dee0fc1df502",
   "result": {
-    "markdown": "---\ntitle: \"Post With Amazing Code\"\nauthor: \"Simon Heitin\"\ndate: \"2022-09-25\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\n---\n\n\nThis is a post with executable code.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(package = 'palmerpenguins')\n```\n:::\n\n## Check Out This Plot!\n\n::: {.cell}\n\n```{.r .cell-code}\npenguins %>%\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/make_a_aplot-1.png){width=672}\n:::\n:::\n",
+    "markdown": "---\ntitle: \"Testing Out Quarto Blog\"\nauthor: \"Simon Heitin\"\ndate: \"2022-09-25\"\nexecute: \n  freeze: auto\ncategories: [news, code, analysis]\n---\n\n\nDon't mind me, just giving it a go with the Quarto blog capability. \n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(package = 'palmerpenguins')\n```\n:::\n\n## Check Out This Plot!\n\n::: {.cell}\n\n```{.r .cell-code}\npenguins %>%\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/make_a_aplot-1.png){width=672}\n:::\n:::\n",
     "supporting": [
       "index_files"
     ],

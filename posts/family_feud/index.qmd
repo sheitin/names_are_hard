@@ -10,13 +10,15 @@ format:
 execute:
   warning: false
   message: false
+  freeze: auto
 categories: [tidytuesday]
 ---
-If there's one thing that unites my family, it's a love of food^[this post is not about about food but maybe the next one should be]. If there are two things that unite my family, they are a love of food and a love of puzzles. So, when I saw that  [tidytuesday](https://github.com/rfordatascience/tidytuesday) had wrangled [a set of crossword clues and answers](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-04-19/readme.md), I knew what I had to do.
 
-I emailed my family members and asked them to submit one guess as to what they thought was the most common 4-letter crossword answer. 
+If there's one thing that unites my family, it's a love of food[^1]. If there are two things that unite my family, they are a love of food and a love of puzzles. So, when I saw that [tidytuesday](https://github.com/rfordatascience/tidytuesday) had wrangled [a set of crossword clues and answers](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-04-19/readme.md), I knew what I had to do.
 
+[^1]: this post is not about about food but maybe the next one should be
 
+I emailed my family members and asked them to submit one guess as to what they thought was the most common 4-letter crossword answer.
 
 ```{r pull_data_and_tidy}
 library(tidyverse)
@@ -68,8 +70,9 @@ family_answers_pctile <- answers_pctile %>%
          num_better_answers = replace_na(num_better_answers, 2000))
 ```
 
-## Bum Bum Ba Da Buuuuum - Results  
-The plot below shows the results of our challenge. The y-axis is the percentile for how common each 4-letter word is. So, if a word is in the 90th percentile, then it is more common than 90% of all 4-letter words (that appeared in at least one crossword puzzle). 
+## Bum Bum Ba Da Buuuuum - Results
+
+The plot below shows the results of our challenge. The y-axis is the percentile for how common each 4-letter word is. So, if a word is in the 90th percentile, then it is more common than 90% of all 4-letter words (that appeared in at least one crossword puzzle).
 
 ```{r plot_results}
 #| fig-width: 4
@@ -99,10 +102,12 @@ library(scales)
         panel.grid.minor.x = element_blank())  +
   labs(y = "Answer Percentile")
 ```
-A keen eye will note that the top answer, "WELL", is at the 100th Percentile. That's right, one family member chose the absolute most common 4-letter crossword clue! It's no wonder that this is also the person who made a living out of playing poker through serious study and computer simulation. 
+
+A keen eye will note that the top answer, "WELL", is at the 100th Percentile. That's right, one family member chose the absolute most common 4-letter crossword clue! It's no wonder that this is also the person who made a living out of playing poker through serious study and computer simulation.
 
 ## Try For Yourself
-Type an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers. 
+
+Type an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers.
 
 ```{r reactable}
 #| fig-caption: 

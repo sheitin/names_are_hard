@@ -2,6 +2,8 @@
 title: "Testing Out Quarto Blog"
 author: "Simon Heitin"
 date: "2022-09-25"
+execute: 
+  freeze: auto
 categories: [news, code, analysis]
 ---
 

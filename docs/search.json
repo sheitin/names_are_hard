@@ -9,14 +9,14 @@
   {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
-    "title": "Post With Amazing Code",
+    "title": "Testing Out Quarto Blog",
     "section": "",
-    "text": "This is a post with executable code."
+    "text": "Don’t mind me, just giving it a go with the Quarto blog capability."
   },
   {
     "objectID": "posts/post-with-code/index.html#check-out-this-plot",
     "href": "posts/post-with-code/index.html#check-out-this-plot",
-    "title": "Post With Amazing Code",
+    "title": "Testing Out Quarto Blog",
     "section": "Check Out This Plot!",
     "text": "Check Out This Plot!\n\npenguins %>%\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point()"
   },
@@ -25,14 +25,14 @@
     "href": "posts/family_feud/index.html",
     "title": "Family Feud - NYT Crossword Edition",
     "section": "",
-    "text": "If there’s one thing that unites my family, it’s a love of food[^1]. If there are two things that unite my family, they are a love of food and a love of puzzles. So, when I saw that tidytuesday had wrangled a set of crossword clues and answers, I knew what I had to do.\nI emailed my family members and asked them to submit one guess as to what they thought was the most common 4-letter crossword answer."
+    "text": "If there’s one thing that unites my family, it’s a love of food1. If there are two things that unite my family, they are a love of food and a love of puzzles. So, when I saw that tidytuesday had wrangled a set of crossword clues and answers, I knew what I had to do.\nI emailed my family members and asked them to submit one guess as to what they thought was the most common 4-letter crossword answer."
   },
   {
     "objectID": "posts/family_feud/index.html#bum-bum-ba-da-buuuuum---results",
     "href": "posts/family_feud/index.html#bum-bum-ba-da-buuuuum---results",
     "title": "Family Feud - NYT Crossword Edition",
     "section": "Bum Bum Ba Da Buuuuum - Results",
-    "text": "Bum Bum Ba Da Buuuuum - Results\n\n\nShow the code\nlibrary(ggrepel)\nlibrary(scales)\n\n family_answers_pctile %>%\n  ggplot(aes(y = pctile)) +\n  geom_vline(xintercept = 0) +\n  geom_point(aes(x = 0), alpha = .3, stroke = 0) +\n  # stat_ecdf() +\n  geom_label_repel(aes(label = answer, x = 0), max.overlaps = 20, fill = \"light blue\") +\n  scale_y_continuous(labels = label_percent(), limits = c(0,1)) +\n  theme_light() +\n  theme(axis.text.x=element_blank(),\n        axis.ticks=element_blank(),\n        axis.title.x=element_blank(),\n        panel.grid.major.x = element_blank(),\n        panel.grid.minor.x = element_blank())  +\n  labs(y = \"Answer Percentile\")\n\n\n\n\n\nFamily Guesses and Their Resulting Percentiles\n\n\n\n\nA keen eye will note that the top answer, “WELL”, is at the 100th Percentile. That’s right, one family member chose the absolute most common 4-letter crossword clue! It’s no wonder that this is also the person who made a living out of playing poker through serious study and computer simulation."
+    "text": "Bum Bum Ba Da Buuuuum - Results\nThe plot below shows the results of our challenge. The y-axis is the percentile for how common each 4-letter word is. So, if a word is in the 90th percentile, then it is more common than 90% of all 4-letter words (that appeared in at least one crossword puzzle).\n\n\nShow the code\nlibrary(ggrepel)\nlibrary(scales)\n\n family_answers_pctile %>%\n  ggplot(aes(y = pctile)) +\n  geom_vline(xintercept = 0) +\n  geom_point(aes(x = 0), alpha = .3, stroke = 0) +\n  # stat_ecdf() +\n  geom_label_repel(aes(label = answer, x = 0), max.overlaps = 20, fill = \"light blue\") +\n  scale_y_continuous(labels = label_percent(), limits = c(0,1)) +\n  theme_light() +\n  theme(axis.text.x=element_blank(),\n        axis.ticks=element_blank(),\n        axis.title.x=element_blank(),\n        panel.grid.major.x = element_blank(),\n        panel.grid.minor.x = element_blank())  +\n  labs(y = \"Answer Percentile\")\n\n\n\n\n\nFamily Guesses and Their Resulting Percentiles\n\n\n\n\nA keen eye will note that the top answer, “WELL”, is at the 100th Percentile. That’s right, one family member chose the absolute most common 4-letter crossword clue! It’s no wonder that this is also the person who made a living out of playing poker through serious study and computer simulation."
   },
   {
     "objectID": "posts/family_feud/index.html#try-for-yourself",
