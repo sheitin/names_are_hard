@@ -1,0 +1,116 @@
+---
+title: "Family Feud - NYT Crossword Edition"
+author: "Simon Heitin"
+date: "2022-09-28"
+format: 
+  html:
+    self-contained: true
+    code-fold: true
+    code-summary: "Show the code"
+execute:
+  warning: false
+  message: false
+categories: [tidytuesday]
+---
+If there's one thing that unites my family, it's a love of food^[this post is not about about food but maybe the next one should be]. If there are two things that unite my family, they are a love of food and a love of puzzles. So, when I saw that  [tidytuesday](https://github.com/rfordatascience/tidytuesday) had wrangled [a set of crossword clues and answers](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-04-19/readme.md), I knew what I had to do.
+
+I emailed my family members and asked them to submit one guess as to what they thought was the most common 4-letter crossword answer. 
+
+
+
+```{r pull_data_and_tidy}
+library(tidyverse)
+library(lubridate)
+
+path <- 
+  'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-04-19/times.csv'
+  
+times <- read_csv(path) 
+
+times_clean <- times %>% 
+  mutate(answer = str_remove_all(answer, " "),
+         answer_len = nchar(answer)) %>% 
+  filter(!is.na(puzzle_date)) 
+
+#these are the guesses. I provided a pseudonym for each family member to keep 
+# things friendly. https://babynames.com/names/random-name-generator.php was a
+#  big help
+fam_responses_anon <- data.frame(
+  stringsAsFactors = FALSE,
+               answer = c("ANTE","ERRS","HOME",
+                          "IDEA","DERN","BEAU","SETS","EONS","ERAS","TIME",
+                          "WELL","WHAT","ACRE","STAG","ARIL", "LAST", "CLAM"),
+            pseudonym = c("Keona","Gordian","Zai",
+                          "Makaila","Olof","Quintana","Selene","Ceron",
+                          "Harrison","Mignonette","Tua","Alysha","Ziva",
+                          "Maddox","Mervin", "Ultimate Warrior", "Janet")
+   )
+
+# get the number of occurrences for each 4-letter word
+answers_ordered <- times_clean %>%
+  filter(answer_len == 4) %>%
+  count(answer, name = "n_appearances") %>%
+  arrange(desc(n_appearances)) 
+
+# to calculate percentiles, we need to 
+answers_pctile <- answers_ordered %>%
+  count(n_appearances, name = "n_answers") %>%
+  arrange(desc(n_appearances)) %>%
+  mutate(num_better_answers = lag(cumsum(n_answers), default = 0),
+         pct_better_answers = num_better_answers / sum(n_answers),
+         pctile = 1-pct_better_answers) %>%
+  right_join(answers_ordered, by = "n_appearances") 
+
+# now just get the answers from my family
+family_answers_pctile <- answers_pctile %>%
+  right_join(fam_responses_anon, by = "answer") %>%
+  mutate(pctile = replace_na(pctile, 0),
+         num_better_answers = replace_na(num_better_answers, 2000))
+```
+
+## Bum Bum Ba Da Buuuuum - Results  
+The plot below shows the results of our challenge. The y-axis is the percentile for how common each 4-letter word is. So, if a word is in the 90th percentile, then it is more common than 90% of all 4-letter words (that appeared in at least one crossword puzzle). 
+
+```{r plot_results}
+#| fig-width: 4
+#| fig-height: 6
+#| fig-cap: "Family Guesses and Their Resulting Percentiles"
+#| fig-cap-location: bottom
+#| fig-alt: 
+#|   a scatterplot with a single vertical line. The x-value is 0 for each 
+#|   point and the y value corresponds to the percentile of each word. Each word 
+#|   itself is labeled. The top two words are 'WELL' and 'STAG'.
+
+library(ggrepel)
+library(scales)
+
+ family_answers_pctile %>%
+  ggplot(aes(y = pctile)) +
+  geom_vline(xintercept = 0) +
+  geom_point(aes(x = 0), alpha = .3, stroke = 0) +
+  # stat_ecdf() +
+  geom_label_repel(aes(label = answer, x = 0), max.overlaps = 20, fill = "light blue") +
+  scale_y_continuous(labels = label_percent(), limits = c(0,1)) +
+  theme_light() +
+  theme(axis.text.x=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title.x=element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())  +
+  labs(y = "Answer Percentile")
+```
+A keen eye will note that the top answer, "WELL", is at the 100th Percentile. That's right, one family member chose the absolute most common 4-letter crossword clue! It's no wonder that this is also the person who made a living out of playing poker through serious study and computer simulation. 
+
+## Try For Yourself
+Type an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers. 
+
+```{r reactable}
+#| fig-caption: 
+
+library(reactable)
+answers_pctile %>%
+  select(answer, n_appearances, pctile) %>%
+  mutate(percentile = scales::percent(pctile, accuracy = .01)) %>%
+  select(`Answer` = answer, `Answer Percentile` = percentile, `No. of Puzzles in Which Answer Appeared` = n_appearances) %>%
+  reactable::reactable(filterable = TRUE, defaultPageSize = 1)
+```

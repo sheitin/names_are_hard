@@ -2,9 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/set-up-quarto-blog-rstudio-cloud/index.html",
-      "/posts/welcome/index.html"
+      "/posts/family_feud/index.html",
+      "/posts/post-with-code/index.html"
     ]
   }
 ]

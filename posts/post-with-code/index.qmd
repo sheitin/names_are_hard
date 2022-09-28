@@ -1,12 +1,11 @@
 ---
-title: "Post With Amazing Code"
+title: "Testing Out Quarto Blog"
 author: "Simon Heitin"
 date: "2022-09-25"
 categories: [news, code, analysis]
-image: "image.jpg"
 ---
 
-This is a post with executable code.
+Don't mind me, just giving it a go with the Quarto blog capability. 
 
 ```{r load_data}
 #| warning: false

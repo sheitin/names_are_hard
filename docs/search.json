@@ -7,13 +7,6 @@
     "text": "I love R and Rstudio for many reasons, the number one being the community. I hope this blog can be a positive contribution to the R community from which I’ve gained so much. Enjoy!"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
     "title": "Post With Amazing Code",
@@ -28,17 +21,31 @@
     "text": "Check Out This Plot!\n\npenguins %>%\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point()"
   },
   {
-    "objectID": "posts/set-up-quarto-blog-rstudio-cloud/index.html",
-    "href": "posts/set-up-quarto-blog-rstudio-cloud/index.html",
-    "title": "DRAFT Post With Amazing Code",
+    "objectID": "posts/family_feud/index.html",
+    "href": "posts/family_feud/index.html",
+    "title": "Family Feud - NYT Crossword Edition",
     "section": "",
-    "text": "The website name will come directly from the github repo name\ncp -r myblog/* .\ngit config –global user.email “simon.heitin@gmail.com” git config –global user.name “Simon Heitin”\nSeems like this page says that there are 3 different ways to publish to GitHub Pages and that each one is “the simplest” https://quarto.org/docs/publishing/github-pages.html\nAdding a new post https://quarto.org/docs/websites/website-blog.html#posts-directory\nI’ll use the first workflow - publish from the docs directory"
+    "text": "If there’s one thing that unites my family, it’s a love of food[^1]. If there are two things that unite my family, they are a love of food and a love of puzzles. So, when I saw that tidytuesday had wrangled a set of crossword clues and answers, I knew what I had to do.\nI emailed my family members and asked them to submit one guess as to what they thought was the most common 4-letter crossword answer."
+  },
+  {
+    "objectID": "posts/family_feud/index.html#bum-bum-ba-da-buuuuum---results",
+    "href": "posts/family_feud/index.html#bum-bum-ba-da-buuuuum---results",
+    "title": "Family Feud - NYT Crossword Edition",
+    "section": "Bum Bum Ba Da Buuuuum - Results",
+    "text": "Bum Bum Ba Da Buuuuum - Results\n\n\nShow the code\nlibrary(ggrepel)\nlibrary(scales)\n\n family_answers_pctile %>%\n  ggplot(aes(y = pctile)) +\n  geom_vline(xintercept = 0) +\n  geom_point(aes(x = 0), alpha = .3, stroke = 0) +\n  # stat_ecdf() +\n  geom_label_repel(aes(label = answer, x = 0), max.overlaps = 20, fill = \"light blue\") +\n  scale_y_continuous(labels = label_percent(), limits = c(0,1)) +\n  theme_light() +\n  theme(axis.text.x=element_blank(),\n        axis.ticks=element_blank(),\n        axis.title.x=element_blank(),\n        panel.grid.major.x = element_blank(),\n        panel.grid.minor.x = element_blank())  +\n  labs(y = \"Answer Percentile\")\n\n\n\n\n\nFamily Guesses and Their Resulting Percentiles\n\n\n\n\nA keen eye will note that the top answer, “WELL”, is at the 100th Percentile. That’s right, one family member chose the absolute most common 4-letter crossword clue! It’s no wonder that this is also the person who made a living out of playing poker through serious study and computer simulation."
+  },
+  {
+    "objectID": "posts/family_feud/index.html#try-for-yourself",
+    "href": "posts/family_feud/index.html#try-for-yourself",
+    "title": "Family Feud - NYT Crossword Edition",
+    "section": "Try For Yourself",
+    "text": "Try For Yourself\nType an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers.\n\n\nShow the code\nlibrary(reactable)\nanswers_pctile %>%\n  select(answer, n_appearances, pctile) %>%\n  mutate(percentile = scales::percent(pctile, accuracy = .01)) %>%\n  select(`Answer` = answer, `Answer Percentile` = percentile, `No. of Puzzles in Which Answer Appeared` = n_appearances) %>%\n  reactable::reactable(filterable = TRUE, defaultPageSize = 1)"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Names Are Hard",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nnews\n\n\nhow-to\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\nNo matching items"
+    "text": "tidytuesday\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\nNo matching items"
   }
 ]

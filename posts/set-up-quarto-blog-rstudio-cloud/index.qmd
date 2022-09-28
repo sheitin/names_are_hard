@@ -2,7 +2,8 @@
 title: "DRAFT Post With Amazing Code"
 author: "Simon Heitin"
 date: "2022-09-25"
-categories: [news, how-to]
+categories: [quarto, how-to]
+draft: true
 ---
 
 ## These Are Just Notes Right Now
