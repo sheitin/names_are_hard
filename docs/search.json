@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "I love R and Rstudio for many reasons, the number one being the community. I hope this blog can be a positive contribution to the R community from which I’ve gained so much. Enjoy!"
+    "text": "I love R and Rstudio for many reasons, the number one being the community. I hope this blog can be a positive contribution to the R community from which I’ve gained so much.\nThe name for the blog, “Names Are Hard,” is a nod to the blinking cursor moment when you are compelled to summarize a piece of work in a single word or phrase. In coding, this moment is ubiquitous as it arises each time you create a variable, start a new project, or save a file. You want the name to be short so that it is easy to type, but not so short as to be uninterpretable1. You want it to be specific to accurately characterize its contents, but you also want to leave space for generalization and reusability2.\nGood names have the illusion of having appeared effortlessly. “Of course you would name it that, what else in the world would you name it?” And yet, naming well usually requires a good deal of thought and often a willingness to rename and rework. So, when the cursor starts blinking, remember to take a moment to acknowledge that you confront a difficult and important task because Names Are Hard.\n\n\n\nFootnotes\n\n\nas a novice Python user, import pandas as pd requires some additional mental energy↩︎\noh how satisfying to wrap up repeated codes in a meaningful function↩︎"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -39,7 +39,7 @@
     "href": "posts/family_feud/index.html#try-for-yourself",
     "title": "Family Feud - NYT Crossword Edition",
     "section": "Try For Yourself",
-    "text": "Try For Yourself\nType an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers.\n\n\nShow the code\nlibrary(reactable)\nanswers_pctile %>%\n  select(answer, n_appearances, pctile) %>%\n  mutate(percentile = scales::percent(pctile, accuracy = .01)) %>%\n  select(`Answer` = answer, `Answer Percentile` = percentile, `No. of Puzzles in Which Answer Appeared` = n_appearances) %>%\n  reactable::reactable(filterable = TRUE, defaultPageSize = 1)"
+    "text": "Try For Yourself\nType an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers.\n\n\nShow the code\nlibrary(reactable)\nanswers_pctile %>%\n  mutate(percentile = scales::percent(pctile, accuracy = .01)) %>%\n  select(`Answer` = answer, \n         `Answer Percentile` = percentile, \n         `No. of Puzzles in Which Answer Appeared` = n_appearances) %>%\n  reactable::reactable(filterable = TRUE, defaultPageSize = 1)"
   },
   {
     "objectID": "index.html",

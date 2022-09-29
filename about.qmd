@@ -1,6 +1,5 @@
 ---
 title: "About"
-image: profile.jpg
 about:
   template: jolla
   links:
@@ -18,4 +17,8 @@ about:
 
 Hello Reader, thanks for clicking on my blog! My name is Simon Heitin and I've been a professional data scientist for 5 years. My academic and career journey has taken me from pure mathematics to systems engineering to operations research to data science. My professional work has been solely in the aviation domain to this point.
 
-I love R and Rstudio for many reasons, the number one being the community. I hope this blog can be a positive contribution to the R community from which I've gained so much. Enjoy!
+I love R and Rstudio for many reasons, the number one being the community. I hope this blog can be a positive contribution to the R community from which I've gained so much.
+
+The name for the blog, "Names Are Hard," is a nod to the blinking cursor moment when you are compelled to summarize a piece of work in a single word or phrase. In coding, this moment is ubiquitous as it arises each time you create a variable, start a new project, or save a file. You want the name to be short so that it is easy to type, but not so short as to be uninterpretable^[as a novice Python user, `import pandas as pd` requires some additional mental energy]. You want it to be specific to accurately characterize its contents, but you also want to leave space for generalization and reusability^[oh how satisfying to wrap up repeated codes in a meaningful function]. 
+
+Good names have the illusion of having appeared effortlessly. "Of course you would name it that, what else in the world would you name it?" And yet, naming well usually requires a good deal of thought and often a willingness to rename and rework. So, when the cursor starts blinking, remember to take a moment to acknowledge that you confront a difficult and important task because Names Are Hard.

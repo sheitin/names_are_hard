@@ -1,7 +1,7 @@
 ---
 title: "DRAFT Post With Amazing Code"
 author: "Simon Heitin"
-date: "2022-09-25"
+date: "2022-09-29"
 categories: [quarto, how-to]
 draft: true
 ---
