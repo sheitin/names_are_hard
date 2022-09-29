@@ -9,7 +9,7 @@
 <meta name="author" content="Simon Heitin">
 <meta name="dcterms.date" content="2022-09-29">
 
-<title>Names Are Hard - DRAFT Post With Amazing Code</title>
+<title>Names Are Hard - Tip - Setting Up A Quarto Blog With RStudio Cloud</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">DRAFT Post With Amazing Code</h1>
+      <h1 class="title">Tip - Setting Up A Quarto Blog With RStudio Cloud</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">quarto</div>
                 <div class="quarto-category">how-to</div>
@@ -142,14 +142,24 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="these-are-just-notes-right-now" class="level2">
-<h2 class="anchored" data-anchor-id="these-are-just-notes-right-now">These Are Just Notes Right Now</h2>
-<p>The website name will come directly from the github repo name</p>
-<p>cp -r myblog/* .</p>
-<p>git config –global user.email “simon.heitin@gmail.com” git config –global user.name “Simon Heitin”</p>
-<p>Seems like this page says that there are 3 different ways to publish to GitHub Pages and that each one is “the simplest” https://quarto.org/docs/publishing/github-pages.html</p>
-<p>Adding a new post https://quarto.org/docs/websites/website-blog.html#posts-directory</p>
-<p>I’ll use the first workflow - publish from the docs directory</p>
+<p>Having just set up a Quarto blog using RStudio Cloud, I thought I’d share one challenge and work-around that was particularly useful.</p>
+<p>The published instructions for <a href="https://quarto.org/docs/websites/website-blog.html#blog-projects">creating a Quarto blog</a> start with the following terminal command:</p>
+<pre><code>quarto create-project myblog --type website:blog</code></pre>
+<p>This command works beautifully, creating all of the files you will need for a Quarto blog as well as a related RStudio Project file in the <code>myblog</code> directory. From what I can tell, this assumes that you are in an RStudio session that does not have an active project.</p>
+<p>However, in the RStudio Cloud environment, the command line is not accessible outside of an RStudio Project. So, if you try the above command, the result will be a new folder with your quarto blog files and an RStudio Project file inside of your existing RStudio project. If you are using Github to deploy the blog, Github won’t be able to find the <code>docs</code> folder since it will be one level deeper than it is expecting. Oh no!</p>
+<p>Luckily, there is an easy fix: omit the new directory name from the terminal command. This will create the files in your root directory, which is the project directory you are already in. The new command becomes:</p>
+<pre><code>quarto create-project --type website:blog</code></pre>
+<p>Happy blogging!</p>
+<section id="tldr---how-to-start-a-quarto-blog-in-rstudio-cloud" class="level2">
+<h2 class="anchored" data-anchor-id="tldr---how-to-start-a-quarto-blog-in-rstudio-cloud">TLDR - How to Start a Quarto Blog in RStudio Cloud</h2>
+<p>To recap, here are the steps: 1) Log into your <a href="https://rstudio.cloud/">RStudio Cloud</a> 2) <a href="https://rstudio.cloud/learn/guide#projects">Start a new project</a> 3) Enter the following command into the terminal: <code>quarto create-project --type website:blog</code></p>
+</section>
+<section id="addendum" class="level2">
+<h2 class="anchored" data-anchor-id="addendum">Addendum</h2>
+<p>If, like me, you got going with your blog work following the published instructions before you realized there was an issue with the file structure, there is a command that will sort things out for you:</p>
+<pre><code>cp -r myblog/* .</code></pre>
+<p>This will copy everything inside of the <code>myblog</code> folder to the project root directory.</p>
+<p>Next, you will need to delete the <code>myblog</code> folder since you’ve already moved its contents.</p>
 
 
 </section>

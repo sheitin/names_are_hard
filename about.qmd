@@ -12,7 +12,8 @@ about:
     - icon: github
       text: Github
       href: https://github.com/sheitin
-
+execute: 
+  eval: false
 ---
 
 Hello Reader, thanks for clicking on my blog! My name is Simon Heitin and I've been a professional data scientist for 5 years. My academic and career journey has taken me from pure mathematics to systems engineering to operations research to data science. My professional work has been solely in the aviation domain to this point.
