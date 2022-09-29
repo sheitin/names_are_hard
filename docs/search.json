@@ -53,7 +53,7 @@
     "href": "posts/set-up-quarto-blog-rstudio-cloud/index.html#tldr---how-to-start-a-quarto-blog-in-rstudio-cloud",
     "title": "Tip - Setting Up A Quarto Blog With RStudio Cloud",
     "section": "TLDR - How to Start a Quarto Blog in RStudio Cloud",
-    "text": "TLDR - How to Start a Quarto Blog in RStudio Cloud\nTo recap, here are the steps: 1) Log into your RStudio Cloud 2) Start a new project 3) Enter the following command into the terminal: quarto create-project --type website:blog"
+    "text": "TLDR - How to Start a Quarto Blog in RStudio Cloud\nTo recap, here are the steps:\n1. Log into your RStudio Cloud\n2. Start a new project\n3. Enter the following command into the terminal:\nquarto create-project --type website:blog`"
   },
   {
     "objectID": "posts/set-up-quarto-blog-rstudio-cloud/index.html#addendum",
