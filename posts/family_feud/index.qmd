@@ -41,11 +41,13 @@ fam_responses_anon <- data.frame(
   stringsAsFactors = FALSE,
                answer = c("ANTE","ERRS","HOME",
                           "IDEA","DERN","BEAU","SETS","EONS","ERAS","TIME",
-                          "WELL","WHAT","ACRE","STAG","ARIL", "LAST", "CLAM", "FOUR", "WILL"),
+                          "WELL","WHAT","ACRE","STAG","ARIL", "LAST", "CLAM", 
+                          "FOUR", "WILL", "BALL"),
             pseudonym = c("Keona","Gordian","Zai",
                           "Makaila","Olof","Quintana","Selene","Ceron",
                           "Harrison","Mignonette","Tua","Alysha","Ziva",
-                          "Maddox","Mervin", "Ultimate Warrior", "Janet", "Tarzan", "Spock")
+                          "Maddox","Mervin", "Ultimate Warrior", "Janet", 
+                          "Tarzan", "Spock", "Sally")
    )
 
 # get the number of occurrences for each 4-letter word
@@ -110,12 +112,12 @@ A keen eye will note that the top answer, "WELL", is at the 100th Percentile. Th
 Type an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers.
 
 ```{r reactable}
-#| fig-caption: 
 
 library(reactable)
 answers_pctile %>%
-  select(answer, n_appearances, pctile) %>%
   mutate(percentile = scales::percent(pctile, accuracy = .01)) %>%
-  select(`Answer` = answer, `Answer Percentile` = percentile, `No. of Puzzles in Which Answer Appeared` = n_appearances) %>%
+  select(`Answer` = answer, 
+         `Answer Percentile` = percentile, 
+         `No. of Puzzles in Which Answer Appeared` = n_appearances) %>%
   reactable::reactable(filterable = TRUE, defaultPageSize = 1)
 ```
