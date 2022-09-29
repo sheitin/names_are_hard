@@ -4,7 +4,7 @@ author: "Simon Heitin"
 date: "2022-09-25"
 execute: 
   freeze: auto
-categories: [news, code, analysis]
+categories: [quarto, code]
 ---
 
 Don't mind me, just giving it a go with the Quarto blog capability. 

@@ -11,7 +11,7 @@ execute:
   warning: false
   message: false
   freeze: auto
-categories: [tidytuesday]
+categories: [tidytuesday, code]
 ---
 
 If there's one thing that unites my family, it's a love of food[^1]. If there are two things that unite my family, they are a love of food and a love of puzzles. So, when I saw that [tidytuesday](https://github.com/rfordatascience/tidytuesday) had wrangled [a set of crossword clues and answers](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-04-19/readme.md), I knew what I had to do.
