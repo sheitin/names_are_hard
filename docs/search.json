@@ -42,10 +42,31 @@
     "text": "Try For Yourself\nType an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers.\n\n\nShow the code\nlibrary(reactable)\nanswers_pctile %>%\n  mutate(percentile = scales::percent(pctile, accuracy = .01)) %>%\n  select(`Answer` = answer, \n         `Answer Percentile` = percentile, \n         `No. of Puzzles in Which Answer Appeared` = n_appearances) %>%\n  reactable::reactable(filterable = TRUE, defaultPageSize = 1)"
   },
   {
+    "objectID": "posts/set-up-quarto-blog-rstudio-cloud/index.html",
+    "href": "posts/set-up-quarto-blog-rstudio-cloud/index.html",
+    "title": "Tip - Setting Up A Quarto Blog With RStudio Cloud",
+    "section": "",
+    "text": "Having just set up a Quarto blog using RStudio Cloud, I thought I’d share one challenge and work-around that was particularly useful.\nThe published instructions for creating a Quarto blog start with the following terminal command:\nThis command works beautifully, creating all of the files you will need for a Quarto blog as well as a related RStudio Project file in the myblog directory. From what I can tell, this assumes that you are in an RStudio session that does not have an active project.\nHowever, in the RStudio Cloud environment, the command line is not accessible outside of an RStudio Project. So, if you try the above command, the result will be a new folder with your quarto blog files and an RStudio Project file inside of your existing RStudio project. If you are using Github to deploy the blog, Github won’t be able to find the docs folder since it will be one level deeper than it is expecting. Oh no!\nLuckily, there is an easy fix: omit the new directory name from the terminal command. This will create the files in your root directory, which is the project directory you are already in. The new command becomes:\nHappy blogging!"
+  },
+  {
+    "objectID": "posts/set-up-quarto-blog-rstudio-cloud/index.html#tldr---how-to-start-a-quarto-blog-in-rstudio-cloud",
+    "href": "posts/set-up-quarto-blog-rstudio-cloud/index.html#tldr---how-to-start-a-quarto-blog-in-rstudio-cloud",
+    "title": "Tip - Setting Up A Quarto Blog With RStudio Cloud",
+    "section": "TLDR - How to Start a Quarto Blog in RStudio Cloud",
+    "text": "TLDR - How to Start a Quarto Blog in RStudio Cloud\nTo recap, here are the steps: 1) Log into your RStudio Cloud 2) Start a new project 3) Enter the following command into the terminal: quarto create-project --type website:blog"
+  },
+  {
+    "objectID": "posts/set-up-quarto-blog-rstudio-cloud/index.html#addendum",
+    "href": "posts/set-up-quarto-blog-rstudio-cloud/index.html#addendum",
+    "title": "Tip - Setting Up A Quarto Blog With RStudio Cloud",
+    "section": "Addendum",
+    "text": "Addendum\nIf, like me, you got going with your blog work following the published instructions before you realized there was an issue with the file structure, there is a command that will sort things out for you:\ncp -r myblog/* .\nThis will copy everything inside of the myblog folder to the project root directory.\nNext, you will need to delete the myblog folder since you’ve already moved its contents."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Names Are Hard",
     "section": "",
-    "text": "tidytuesday\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\nNo matching items"
+    "text": "quarto\n\n\nhow-to\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntidytuesday\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nquarto\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nSimon Heitin\n\n\n\n\n\n\nNo matching items"
   }
 ]

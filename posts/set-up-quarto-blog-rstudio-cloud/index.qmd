@@ -1,25 +1,43 @@
 ---
-title: "DRAFT Post With Amazing Code"
+title: "Tip - Setting Up A Quarto Blog With RStudio Cloud"
 author: "Simon Heitin"
 date: "2022-09-29"
 categories: [quarto, how-to]
-draft: true
+execute:
+  eval: false
 ---
 
-## These Are Just Notes Right Now
+Having just set up a Quarto blog using RStudio Cloud, I thought I'd share one challenge and work-around that was particularly useful.
 
-The website name will come directly from the github repo name
+The published instructions for [creating a Quarto blog](https://quarto.org/docs/websites/website-blog.html#blog-projects) start with the following terminal command:
+```
+quarto create-project myblog --type website:blog
+```
 
+This command works beautifully, creating all of the files you will need for a Quarto blog as well as a related RStudio Project file in the `myblog` directory. From what I can tell, this assumes that you are in an RStudio session that does not have an active project. 
+
+However, in the RStudio Cloud environment, the command line is not accessible outside of an RStudio Project. So, if you try the above command, the result will be a new folder with your quarto blog files and an RStudio Project file inside of your existing RStudio project. If you are using Github to deploy the blog, Github won't be able to find the `docs` folder since it will be one level deeper than it is expecting. Oh no!
+
+Luckily, there is an easy fix: omit the new directory name from the terminal command. This will create the files in your root directory, which is the project directory you are already in. The new command becomes:
+```
+quarto create-project --type website:blog
+```
+
+Happy blogging!
+
+## TLDR - How to Start a Quarto Blog in RStudio Cloud
+
+To recap, here are the steps:
+1) Log into your [RStudio Cloud](https://rstudio.cloud/)
+2) [Start a new project](https://rstudio.cloud/learn/guide#projects)
+3) Enter the following command into the terminal: `quarto create-project --type website:blog`
+
+## Addendum
+If, like me, you got going with your blog work following the published instructions before you realized there was an issue with the file structure, there is a command that will sort things out for you:
+```
 cp -r myblog/* .
+```
 
-  git config --global user.email "simon.heitin@gmail.com"
-  git config --global user.name "Simon Heitin"
+This will copy everything inside of the `myblog` folder to the project root directory. 
 
-
-
-Seems like this page says that there are 3 different ways to publish to GitHub Pages and that each one is "the simplest" https://quarto.org/docs/publishing/github-pages.html
-
-Adding a new post
-https://quarto.org/docs/websites/website-blog.html#posts-directory
-
-I'll use the first workflow - publish from the docs directory
+Next, you will need to delete the `myblog` folder since you've already moved its contents.

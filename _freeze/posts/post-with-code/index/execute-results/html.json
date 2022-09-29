@@ -1,7 +1,7 @@
 {
-  "hash": "a26d6f7aee01b2e40136dee0fc1df502",
+  "hash": "7b0024a16604095c39aeb1c06b1f3802",
   "result": {
-    "markdown": "---\ntitle: \"Testing Out Quarto Blog\"\nauthor: \"Simon Heitin\"\ndate: \"2022-09-25\"\nexecute: \n  freeze: auto\ncategories: [news, code, analysis]\n---\n\n\nDon't mind me, just giving it a go with the Quarto blog capability. \n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(package = 'palmerpenguins')\n```\n:::\n\n## Check Out This Plot!\n\n::: {.cell}\n\n```{.r .cell-code}\npenguins %>%\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/make_a_aplot-1.png){width=672}\n:::\n:::\n",
+    "markdown": "---\ntitle: \"Testing Out Quarto Blog\"\nauthor: \"Simon Heitin\"\ndate: \"2022-09-25\"\nexecute: \n  freeze: auto\ncategories: [quarto, code]\n---\n\n\nDon't mind me, just giving it a go with the Quarto blog capability. \n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(package = 'palmerpenguins')\n```\n:::\n\n## Check Out This Plot!\n\n::: {.cell}\n\n```{.r .cell-code}\npenguins %>%\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/make_a_aplot-1.png){width=672}\n:::\n:::\n",
     "supporting": [
       "index_files"
     ],
