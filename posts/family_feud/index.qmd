@@ -109,7 +109,7 @@ A keen eye will note that the top answer, "WELL", is at the 100th Percentile. Th
 
 ## Try For Yourself
 
-Type an answer in ALL CAPS in the text box in the first column below. This is filtered to 4-letter answers.
+Type an answer in ALL CAPS in the text box in the first column below. This is limited to 4-letter answers. The time range is `r min(times_clean$puzzle_date)` to `r max(times_clean$puzzle_date)`.
 
 ```{r reactable}
 
