@@ -147,8 +147,8 @@ ul.task-list li input[type="checkbox"] {
 <p>We have a fantastic team that manages our RStudio Server environment. They implement a system that provides the flexibility for folks to manage their own package libraries as well as to use a set of centrally-managed system-level packages. The system-level package library is updated each night by a script that checks for new versions of an admin-specified set of packages and installs an update if one exists.</p>
 <p>In the user environment, when a user calls a package with <code>library(a_package)</code>, <code>.libPaths()</code> will first look in a directory of user-managed packages. These are any packages that a user installed explicitly using <code>install.packages</code>() or equivalent.</p>
 <p>If the package is not found in the user-managed directory, then the environment will move to the directory of system-level packages.</p>
-<p>A problem can arise when a user unknowingly installs a package that is a dependency for a package that is managed at the system level. While this may be fine at first, over time the system-level packages will be automatically kept current and the system-level package may depend on a newer version of the other package than what the user installed. The updated version of the dependency package will have been automatically updated in the system repository, but the user may forget to update their own version. So, when the user calls the system-managed package, <code>.libPaths()</code> will grab the version of the dependency package that is in their personal directory and R will throw an error.</p>
-<p>This can be very confusing to users who are not used to managing their own package libraries. In fact, one of the wonderful things about our RStudio environment is that users can get really far without having to worry about package management or even know about <code>install.packages()</code>. They can just get coding!</p>
+<p>A problem can arise when a user unknowingly installs a package that is a dependency for a package that is managed at the system level. While this may be fine at first, over time the system-level packages will be automatically kept current and the system-level package may depend on a newer version of the other package than what the user installed. The updated version of the dependency package will have been automatically updated in the system repository, but the user may forget to update their own version. So, when the user calls the system-managed package, the system will grab the version of the dependency package that is in their personal directory and R will throw an error.</p>
+<p>This can be very confusing to users who are not used to managing their own package libraries. In fact, one of the wonderful things about our RStudio environment is that users can get really far without having to worry about package management or even know about <code>install.packages()</code>. They can just get coding!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
 <section id="an-evolving-solution" class="level2">
 <h2 class="anchored" data-anchor-id="an-evolving-solution">An Evolving Solution</h2>
@@ -169,12 +169,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="solution-implemented" class="level2">
 <h2 class="anchored" data-anchor-id="solution-implemented">Solution Implemented</h2>
 <p>And so, armed with fantastic documentation, technical support, and a full-day meeting with myself, I wrote my first package.</p>
-<p>V0.1 of <code>libfilesmgr</code> has one function: <code>clean_personal_libs()</code>. It has been used by probably a dozen users over the last couple years and there are no plans to expand the scope or enrich its function.</p>
+<p>V0.1 of <code>libfilesmgr</code> has one function: <code>clean_personal_libs()</code>. It has been used by probably a dozen users over the last couple years and there are no plans to expand the scope or enrich its function. I believe it will continue to be useful within this well-defined scope and the journey of writing it was certainly a useful experience for me to learn the mechanics of package development.</p>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>more advanced users, or anyone looking for reproducability will want to look into the (renv)[https://rstudio.github.io/renv/articles/renv.html] package. Here’s a nice (talk)[https://www.rstudio.com/conference/2022/talks/you-should-use-renv/] on renv by E. David Aja from this year’s rstudio::conf.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

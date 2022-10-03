@@ -6,6 +6,7 @@ categories: [packages]
 execute:
   eval: false
 ---
+
 The first package I wrote myself was terribly unexciting except for one thing: it solved a package management problem problem that was common for new or intermediate R users at my organization.
 
 ## Background - Our RStudio Server Setup
@@ -16,9 +17,11 @@ In the user environment, when a user calls a package with `library(a_package)`, 
 
 If the package is not found in the user-managed directory, then the environment will move to the directory of system-level packages.
 
-A problem can arise when a user unknowingly installs a package that is a dependency for a package that is managed at the system level. While this may be fine at first, over time the system-level packages will be automatically kept current and the system-level package may depend on a newer version of the other package than what the user installed. The updated version of the dependency package will have been automatically updated in the system repository, but the user may forget to update their own version. So, when the user calls the system-managed package, `.libPaths()` will grab the version of the dependency package that is in their personal directory and R will throw an error.
+A problem can arise when a user unknowingly installs a package that is a dependency for a package that is managed at the system level. While this may be fine at first, over time the system-level packages will be automatically kept current and the system-level package may depend on a newer version of the other package than what the user installed. The updated version of the dependency package will have been automatically updated in the system repository, but the user may forget to update their own version. So, when the user calls the system-managed package, the system will grab the version of the dependency package that is in their personal directory and R will throw an error.
 
-This can be very confusing to users who are not used to managing their own package libraries. In fact, one of the wonderful things about our RStudio environment is that users can get really far without having to worry about package management or even know about `install.packages()`. They can just get coding!
+This can be very confusing to users who are not used to managing their own package libraries. In fact, one of the wonderful things about our RStudio environment is that users can get really far without having to worry about package management or even know about `install.packages()`. They can just get coding![^1]
+
+[^1]: more advanced users, or anyone looking for reproducability will want to look into the (renv)\[https://rstudio.github.io/renv/articles/renv.html\] package. Here's a nice (talk)\[https://www.rstudio.com/conference/2022/talks/you-should-use-renv/\] on renv by E. David Aja from this year's rstudio::conf.
 
 ## An Evolving Solution
 
@@ -34,7 +37,7 @@ Enter ["R Packages"](https://r-pkgs.org/) by Hadley Wickham and Jenny Bryan.
 
 The best thing about "R Packages" is that it prods users to keep a healthy problem-solving attitude and to be gentle with themselves while they wrestle with challenging technical problems. The end of the introduction sets the tone:
 
-> Writing a package can seem overwhelming at first. So start with the basics and improve it over time. It doesn\'t matter if your first version isn\'t perfect as long as the next version is better. - R Packages
+> Writing a package can seem overwhelming at first. So start with the basics and improve it over time. It doesn't matter if your first version isn't perfect as long as the next version is better. - R Packages
 
 The second best thing about "R Packages" is the accompanying package-writing packages that just make things work. `devtools`, `usethis`, and `testthat` are thoughtfully curated to support the workflows described in "R Packages" while providing flexibility and room for growth for advancing users.
 
@@ -42,6 +45,6 @@ The third best thing about "R Packages" is that all of it (the book, the package
 
 ## Solution Implemented
 
-And so, armed with fantastic documentation, technical support, and a full-day meeting with myself, I wrote my first package. 
+And so, armed with fantastic documentation, technical support, and a full-day meeting with myself, I wrote my first package.
 
-V0.1 of `libfilesmgr` has one function: `clean_personal_libs()`. It has been used by probably a dozen users over the last couple years and there are no plans to expand the scope or enrich its function. 
+V0.1 of `libfilesmgr` has one function: `clean_personal_libs()`. It has been used by probably a dozen users over the last couple years and there are no plans to expand the scope or enrich its function. I believe it will continue to be useful within this well-defined scope and the journey of writing it was certainly a useful experience for me to learn the mechanics of package development.
