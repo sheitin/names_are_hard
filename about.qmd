@@ -3,9 +3,6 @@ title: "About"
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/simonheitin
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/simon-heitin-38145892/
