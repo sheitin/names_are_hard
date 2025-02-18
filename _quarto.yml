@@ -9,8 +9,6 @@ website:
       - about.qmd
       - icon: github
         href: https://github.com/sheitin
-      - icon: twitter
-        href: https://twitter.com/simonheitin
 format:
   html:
     theme: yeti
