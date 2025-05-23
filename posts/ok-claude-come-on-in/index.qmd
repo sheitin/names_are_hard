@@ -7,17 +7,19 @@ format:
   html:
     code-fold: true
     code-summary: "Show the code"
+    toc: true
+    toc-location: right
 ---
 
 Recently, I have been playing with AI tools, trying out different ways of integrating them into my workflow. My most comfortable environment is using the RStudio IDE, Quarto, and the tidyverse to wrangle data and build plots to tell a story. After quite a bit of trial and error, I landed on the following additions to this setup:
 
-- Ellmer for programmatic access to the LLM (Claude-Sonnet)
-- The btw package for supplementing prompts with information about my active R environment
+- [Ellmer](https://ellmer.tidyverse.org/) for programmatic access to the LLM (Claude-3-7-Sonnet)
+- The [btw](https://github.com/posit-dev/btw) package for supplementing prompts with information about my active R environment
 - An Anthropic API key with $5 in an account
 
 As with any new tool, the best way to know if it is useful is to try to use it to solve problems.
 
-So, I picked up the latest Tidy Tuesday dataset and did some Exploratory Data Analysis (EDA). I didn't start with the LLM right away though. I am pretty quick at exploring data with the tidyverse and building plots using ggplot. So, I used my normal workflow (non-AI-assisted) to decide what I wanted to convey with my plot and get to iterating.
+So, I picked up the latest [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) dataset and did some Exploratory Data Analysis (EDA). I didn't start with the LLM right away though. I am pretty quick at exploring data with the [tidyverse](https://www.tidyverse.org/) and building plots using [ggplot2](https://ggplot2.tidyverse.org/). So, I used my normal workflow (non-AI-assisted) to decide what I wanted to convey with my plot and get to iterating.
 
 And this is where I hit a familiar problem. There are endless options for tweaking plots, and with even a dash of perfectionist tendency, you can get stuck making endless minor adjustments. After trying my tenth different combination of height/width ratio, I asked the LLM for help breaking out of this cycle.
 
@@ -56,6 +58,7 @@ breaks <- as.Date(ymd(c("2013-01-01",
                         #"2024-01-01",
                         "2025-01-01")))
 
+# Aggregated stats
 vesuvius_agg <- vesuvius |>
   summarize(n = n(),
             .by = obs_day) |>
@@ -138,7 +141,7 @@ daily_plot_v1
 # Version 2: Enhanced with smoother and highlighted periods
 daily_plot_v2 <- ggplot(vesuvius_agg, aes(x = obs_day, y = n)) +
   geom_line(color = "grey70") +
-  # geom_smooth(method = "loess", span = 0.1, se = FALSE, color = "steelblue") +
+  geom_smooth(method = "loess", span = 0.1, se = FALSE, color = "steelblue") +
   geom_point(data = subset(vesuvius_agg, top_ten == "top"), 
              aes(color = top_ten), size = 2) +
   scale_color_manual(values = color_list) +
@@ -150,9 +153,8 @@ daily_plot_v2 <- ggplot(vesuvius_agg, aes(x = obs_day, y = n)) +
             color = pop_color) +
   scale_x_date(breaks = breaks, date_labels = "%Y") +
   labs(title = "Vesuvius Seismic Activity (2013-2024)",
-       subtitle = "<span style = 'color: DarkOrange;'>Top Ten Most Active Days</span> ",
        x = "Date", 
-       y = "# of Earthquakes") +
+       y = "Number of Events") +
   theme_light() +
   theme(legend.position = "bottom",
         plot.subtitle = ggtext::element_markdown()) +
@@ -215,23 +217,23 @@ daily_plot_v4
 
 :::
 
-
-
 ### Lots of Small Changes
 I knew that LLMs were non-deterministic and to be ready for possibly wild results. But, what I hadn't considered was that it would also make a lot of smaller, somewhat arbitrary changes. Some examples:
+
 - The label "# of Earthquakes" became "Number of Events"
 - The title "Earthquake Activity Near Mt Vesuvius Over Time" became "Vesuvius Seismic Activity (2013-2024)" or "Daily Seismic Events at Mount Vesuvius (2013-2024)"
 - It summarily dropped the Alt Text label
 
 The most helpful result: One of the LLM-generated time series plots added points to the observations I wanted to highlight, and they looked nice. In my version, I used color and had a text callout but not points. A small change, but I liked it.
-## One Funky Code Smell
+
+### One Funky Code Smell
 I actually ran the prompt a couple of times and the results were fairly similar each time with one exception: one version wrapped each of the plot objects in a function call. This is a fine practice in general, but the LLM made the strange  choice of adding `library` calls inside of each function. 
 
 The sneaky thing about this is that the code will run, but it's not a pattern any seasoned R programmer would recommend. A new R programmer, though, might be tripped up. 
 
 More than anything, this was a reminder to be skeptical of the LLM output, especially when doing tasks that aren't yet part of your expertise. In those cases, returning to documentation you trust could be a good way to check any LLM-generated patterns that look suspect.
 
-## Takeaways
+## Making Good Choices
 
 Upon reflection, a few of the choices I made for this project made it likely to succeed:
 
@@ -242,15 +244,16 @@ In [a recent LinkedIn post](https://www.linkedin.com/posts/emollick_the-most-obv
 > The most obvious, lowest risk way to use AI (and to get a sense of how good it is in areas that matter to you) is to ask it for second opinions in your area of expertise.
 
 2. **I chose a task that was verifiable** - asking it to generate code meant that I could run the code to test it.
-	1. With code, you can integrate the result into your existing product. With writing that can be harder.
+
+With code, you can integrate the result into your existing product. With writing that can be harder.
 	
 3. **I chose a task that was scoped** - by the time I pulled in the LLM, I already knew the point I wanted to convey. I was looking for options to convey it.
-	1. Relatedly, I limited the number of turns with the LLM. I took what the LLM had to offer with some limited prompting and then got back to my normal workflow. Overall, I worked like this:
 
-Picture of me, me and the LLM, and then me again
+Relatedly, I limited the number of turns with the LLM. I took what the LLM had to offer with some limited prompting and then got back to my normal workflow. 
 
 4. **I configured my environment before starting** - I used the [Ellmer](https://ellmer.tidyverse.org/index.html) and [btw](https://github.com/posit-dev/btw) packages to make it easy to give the LLM my full context.
-	1. I spent a whole lot of time researching different workflows and setups. This could be another set of posts and I will link below to resources that I used to do this.
+
+I spent a whole lot of time researching different workflows and setups. This could be another set of posts and I will link below to resources that I used to do this.
 
 Andrew Holz mad a related recommendation in his excellent blog post ["Running AI/LLM Hackathons at Posit: What We’ve Learned"](https://posit.co/blog/llm-hackathon-lessons-learned/):
 
@@ -259,7 +262,7 @@ Andrew Holz mad a related recommendation in his excellent blog post ["Running AI
 ## What's Next
 I am looking to grow as a Python programmer, and I will apply some of the things I learned during this exercise. The packages and plugins I used here (Ellmer and btw) are R-specific, so I will try different Python-specific options. 
 
-I have been playing with Continue writing Python in the Positron IDE and have had good results. One feature I like is that the Continue plugin presents code changes as actual diffs for you to accept or reject rather than immediately writing over your code. 
+I have been playing with [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) writing Python in the [Positron IDE](https://positron.posit.co/) and have had good results. One feature I like is that the Continue plugin presents code changes as actual diffs for you to accept or reject rather than immediately writing over your code. 
 
 I have an inkling that change management is important since the LLM makes it easy to generate new code and edit existing code. It will be useful to be able to get back to a state where you know things work. I would like to try using a more deliberate git strategy to help here: frequent commits and a willingness to revert. While this would be adding yet another technology to the mix, git is very mature and I am pretty comfortable with it. 
 
