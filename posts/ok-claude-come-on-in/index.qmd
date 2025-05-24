@@ -9,6 +9,9 @@ format:
     code-summary: "Show the code"
     toc: true
     toc-location: right
+execute:
+  message: false
+  warning: false
 ---
 
 Recently, I have been playing with AI tools, trying out different ways of integrating them into my workflow. My most comfortable environment is using the RStudio IDE, Quarto, and the tidyverse to wrangle data and build plots to tell a story. After quite a bit of trial and error, I landed on the following additions to this setup:
@@ -260,7 +263,8 @@ Andrew Holz mad a related recommendation in his excellent blog post ["Running AI
 >Interacting with LLMs programmatically—rather than through a chat interface or as code completion—provides deeper insight into both the challenges and the possibilities.
 
 ## What's Next
-I am looking to grow as a Python programmer, and I will apply some of the things I learned during this exercise. The packages and plugins I used here (Ellmer and btw) are R-specific, so I will try different Python-specific options. 
+
+I am looking to grow as a Python programmer, and I wonder how well AI can assist in an area where I don't have quite the same fluency. The packages and plugins I used here (`Ellmer` and `btw`) are R-specific, so I will try different Python-specific options. 
 
 I have been playing with [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) writing Python in the [Positron IDE](https://positron.posit.co/) and have had good results. One feature I like is that the Continue plugin presents code changes as actual diffs for you to accept or reject rather than immediately writing over your code. 
 
