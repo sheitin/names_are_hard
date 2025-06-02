@@ -4,16 +4,16 @@ project:
 
 website:
   title: "Names Are Hard"
+  site-url: https://sheitin.github.io/names_are_hard/
+  description: "Simon's musings on Data Science"
   navbar:
     right:
       - about.qmd
       - icon: github
         href: https://github.com/sheitin
+      - icon: rss
+        href: index.xml
 format:
   html:
     theme: yeti
     css: styles.css
-
-
-
-  
