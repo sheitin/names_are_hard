@@ -9,6 +9,8 @@ format:
     code-summary: "Show the code"
     toc: true
     toc-location: right
+aliases:
+  - ok-claude-come-on-in.html
 execute:
   message: false
   warning: false
