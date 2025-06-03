@@ -10,7 +10,7 @@ format:
     toc: true
     toc-location: right
 aliases:
-  - ok-claude-come-on-in.html
+  - /posts/ok-claude-come-on-in/index.html
 execute:
   message: false
   warning: false
